@@ -104,13 +104,11 @@ export default function Locations() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="rounded-2xl overflow-hidden shadow-lg border"
-            style={{ borderColor: "rgba(91, 140, 155, 0.15)", height: "450px" }}
+            style={{ borderColor: "rgba(91, 140, 155, 0.15)", position: "relative", minHeight: "480px" }}
           >
             <iframe
               src="https://maps.google.com/maps?f=q&hl=pt-BR&q=Rua+Bento+de+Andrade,+58,+Jardim+Paulista,+S%C3%A3o+Paulo,+SP,+04503-000&z=16&ie=UTF8&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, display: "block" }}
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0, display: "block" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
