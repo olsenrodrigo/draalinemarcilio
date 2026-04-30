@@ -63,9 +63,9 @@ export default function Contact() {
                 <div>
                   <p className="font-bold mb-1" style={{ color: "#212529" }}>Endereço</p>
                   <p className="text-sm" style={{ color: "#3C3C3C" }}>
-                    Rua Bento de Andrade, 58<br />
-                    Jardim Paulista<br />
-                    São Paulo/SP — CEP 04503-000
+                    Clínica Alumia<br />
+                    Alameda Campinas, 1100 — 11º andar<br />
+                    Jardins — São Paulo/SP
                   </p>
                 </div>
               </div>
@@ -79,10 +79,10 @@ export default function Contact() {
                 <div>
                   <p className="font-bold mb-1" style={{ color: "#212529" }}>Contato</p>
                   <p className="text-sm" style={{ color: "#3C3C3C" }}>
-                    WhatsApp: (11) 93800-9174
+                    WhatsApp: (11) 93335-3033
                   </p>
                   <a
-                    href="https://wa.me/5511938009174"
+                    href="https://wa.me/5511933353033"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-3 px-4 py-2 text-white text-sm rounded-full font-medium transition-all hover:opacity-90"

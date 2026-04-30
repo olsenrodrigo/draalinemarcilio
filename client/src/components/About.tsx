@@ -8,7 +8,7 @@ export default function About() {
     { icon: Award, text: "Especialista certificada pelo CBCD" },
     { icon: BookOpen, text: "Fellowship em Videolaparoscopia — Bélgica" },
     { icon: GraduationCap, text: "Formada pela Faculdade de Medicina da USP (FMUSP)" },
-    { icon: Building2, text: "Preceptora de residência médica no HC-FMUSP" },
+    { icon: Building2, text: "Chefe de residentes no HC-FMUSP" },
     { icon: IdCard, text: "CRM 144.320/SP · RQE 72.325" },
   ];
 
@@ -43,14 +43,19 @@ export default function About() {
             <p className="text-lg mb-4 leading-relaxed" style={{ color: "#3C3C3C" }}>
               Graduada pela <strong>Faculdade de Medicina da USP (FMUSP)</strong>, realizou residência médica em
               Cirurgia Geral e Cirurgia Digestiva no <strong>Hospital das Clínicas da FMUSP</strong>, onde também
-              atuou como <strong>preceptora de residentes</strong>. Aprimorou sua técnica em videolaparoscopia com
+              atuou como <strong>chefe de residentes</strong>. Aprimorou sua técnica em videolaparoscopia com
               fellowship no <strong>Saint-Pierre University Hospital, em Bruxelas (Bélgica)</strong>.
             </p>
 
-            <p className="text-lg mb-8 leading-relaxed" style={{ color: "#3C3C3C" }}>
+            <p className="text-lg mb-4 leading-relaxed" style={{ color: "#3C3C3C" }}>
               Com mais de <strong>10 anos de atuação cirúrgica</strong>, a Dra. Aline é reconhecida pela
               atenção cuidadosa a cada caso, pela clareza nas orientações e pela decisão compartilhada com
               o paciente — sempre com base em evidências científicas e respeito à individualidade de quem a procura.
+            </p>
+
+            <p className="text-lg mb-8 leading-relaxed" style={{ color: "#3C3C3C" }}>
+              Atua com abordagem integrativa baseada em evidências, incluindo doenças gastrointestinais
+              funcionais como <strong>síndrome do intestino irritável, SIBO e disbioses</strong>.
             </p>
 
             <div className="grid sm:grid-cols-2 gap-3 mt-8">

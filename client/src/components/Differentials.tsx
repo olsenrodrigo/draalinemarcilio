@@ -6,22 +6,22 @@ export default function Differentials() {
     {
       icon: GraduationCap,
       title: "Formação de excelência internacional",
-      description: "Graduada pela FMUSP, com residência no HC e fellowship em videolaparoscopia em Bruxelas (Bélgica). Participante ativa em congressos nacionais e internacionais de cirurgia digestiva, bariátrica e coloproctologia.",
+      description: "Formação pela FMUSP, com experiência internacional em videolaparoscopia na Bélgica e constante atualização científica.",
     },
     {
       icon: Eye,
-      title: "Diagnóstico preciso, sem atalhos",
-      description: "Consultas com tempo dedicado para ouvir, investigar e orientar. Cada caso é avaliado de forma individual, sem protocolos genéricos — com foco em acertar a indicação antes de qualquer procedimento.",
+      title: "Decisão cirúrgica com responsabilidade",
+      description: "Cada indicação é feita com critério, evitando excessos e priorizando o que realmente é necessário para o paciente.",
     },
     {
       icon: Heart,
-      title: "Cuidado humanizado e contínuo",
-      description: "A relação com o paciente não termina na cirurgia. A Dra. Aline acompanha o pré e o pós-operatório com atenção, clareza e presença — garantindo segurança em cada etapa do tratamento.",
+      title: "Cuidado individualizado e contínuo",
+      description: "Acompanhamento próximo em todas as etapas, da primeira consulta ao pós-operatório.",
     },
     {
       icon: Globe,
-      title: "Técnica minimamente invasiva",
-      description: "Especialista em videolaparoscopia, a Dra. Aline utiliza as abordagens menos invasivas disponíveis — com menor risco cirúrgico, menos dor no pós-operatório e retorno mais rápido às atividades.",
+      title: "Abordagem integrada da saúde",
+      description: "Visão que considera não apenas a doença, mas o paciente como um todo, incluindo hábitos, estilo de vida e saúde intestinal.",
     },
   ];
 
@@ -44,7 +44,7 @@ export default function Differentials() {
             </h3>
 
             <p className="text-xl" style={{ color: "#3C3C3C" }}>
-              Técnica de ponta com o cuidado de quem realmente ouve o paciente.
+              Um cuidado médico que vai além da técnica, com escuta, estratégia e precisão.
             </p>
           </motion.div>
 
