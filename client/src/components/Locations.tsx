@@ -35,7 +35,7 @@ export default function Locations() {
           </h3>
 
           <p className="text-xl max-w-3xl mx-auto" style={{ color: "#3C3C3C" }}>
-            Consultório localizado em São Paulo, com cirurgias realizadas em centros cirúrgicos de referência.
+            Atendimento em clínica moderna nos Jardins, São Paulo. Ambiente acolhedor, privativo e preparado para receber cada paciente com conforto.
           </p>
         </motion.div>
 
@@ -74,14 +74,13 @@ export default function Locations() {
               <div className="flex items-start gap-3 mb-4">
                 <MapPin className="w-5 h-5 flex-shrink-0 mt-1" style={{ color: "#5B8C9B" }} />
                 <div>
-                  <p className="font-bold mb-1" style={{ color: "#212529" }}>Consultório — Jardim Paulista</p>
+                  <p className="font-bold mb-1" style={{ color: "#212529" }}>Clínica Alumia — Jardins</p>
                   <p style={{ color: "#3C3C3C" }}>
-                    Rua Bento de Andrade, 58<br />
-                    Jardim Paulista — São Paulo/SP<br />
-                    CEP 04503-000
+                    Alameda Campinas, 1100 — 11º andar<br />
+                    Jardins — São Paulo/SP
                   </p>
                   <p className="mt-3 text-sm font-medium" style={{ color: "#5B8C9B" }}>
-                    WhatsApp para agendamentos: (11) 93800-9174
+                    WhatsApp para agendamentos: (11) 93335-3033
                   </p>
                 </div>
               </div>
@@ -107,7 +106,7 @@ export default function Locations() {
             style={{ borderColor: "rgba(91, 140, 155, 0.15)", position: "relative", minHeight: "480px" }}
           >
             <iframe
-              src="https://maps.google.com/maps?f=q&hl=pt-BR&q=Rua+Bento+de+Andrade,+58,+Jardim+Paulista,+S%C3%A3o+Paulo,+SP,+04503-000&z=16&ie=UTF8&output=embed"
+              src="https://maps.google.com/maps?f=q&hl=pt-BR&q=Alameda+Campinas,+1100,+Jardins,+S%C3%A3o+Paulo,+SP&z=16&ie=UTF8&output=embed"
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", border: 0, display: "block" }}
               allowFullScreen
               loading="lazy"

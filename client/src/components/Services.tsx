@@ -4,17 +4,15 @@ import { CheckCircle2 } from "lucide-react";
 export default function Services() {
   const services = [
     "Cirurgia do Aparelho Digestivo",
-    "Coloproctologia",
     "Cirurgia Bariátrica (Sleeve e Bypass)",
+    "Cirurgia de Refluxo Gastroesofágico",
     "Cirurgia Laparoscópica da Vesícula",
-    "Tratamento de Refluxo Gastroesofágico",
     "Hérnias por Videolaparoscopia",
-    "Diastase Abdominal",
-    "Tratamento de Hemorroidas",
-    "Fissuras e Fístulas Anorretais",
+    "Diástase Abdominal",
     "Câncer Colorretal",
     "Doenças Inflamatórias Intestinais",
-    "Colonoscopia",
+    "Proctologia (hemorroidas, fissuras e fístulas)",
+    "Doenças Gastrointestinais Clínicas (SII, SIBO, disbioses)",
   ];
 
   return (
@@ -68,8 +66,8 @@ export default function Services() {
             Problemas digestivos afetam sua qualidade de vida
           </h4>
           <p className="text-xl mb-8 max-w-2xl mx-auto" style={{ color: "#EDF2F4" }}>
-            Não deixe sintomas sem resposta. A avaliação especializada é o primeiro passo
-            para um tratamento seguro, eficaz e minimamente invasivo.
+            Não ignore sintomas. A avaliação especializada é o primeiro passo para um
+            tratamento eficaz e com resultados duradouros.
           </p>
           <button
             className="px-8 py-4 bg-white rounded-full font-semibold hover:bg-opacity-90 transition-colors cursor-pointer"

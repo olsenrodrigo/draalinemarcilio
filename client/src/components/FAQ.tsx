@@ -86,11 +86,8 @@ export default function FAQ() {
           <div className="flex flex-wrap justify-center gap-4 mb-8 text-lg" style={{ color: "#EDF2F4" }}>
             <span>Atendimento particular</span>
             <span>|</span>
-            <span>Jardim Paulista — São Paulo/SP</span>
+            <span>Jardins — São Paulo/SP</span>
           </div>
-          <p className="text-base mb-8" style={{ color: "rgba(237, 242, 244, 0.8)" }}>
-            Rua Bento de Andrade, 58 — Jardim Paulista, São Paulo/SP
-          </p>
           <button
             className="px-8 py-4 bg-white rounded-full font-semibold hover:bg-opacity-90 transition-colors cursor-pointer"
             style={{ color: "#2C3E50" }}

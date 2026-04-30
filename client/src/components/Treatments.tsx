@@ -5,39 +5,39 @@ export default function Treatments() {
   const treatments = [
     {
       icon: Scissors,
-      text: "Gastrectomia Sleeve (redução do estômago)"
+      text: "Gastrectomia Sleeve"
     },
     {
       icon: Activity,
-      text: "Bypass Gástrico em Y de Roux (Roux-en-Y)"
+      text: "Bypass Gástrico"
     },
     {
       icon: Stethoscope,
-      text: "Colecistectomia Laparoscópica (pedra na vesícula)"
+      text: "Cirurgia de Refluxo Gastroesofágico"
     },
     {
       icon: Zap,
-      text: "Correção de Hérnia por Videolaparoscopia"
+      text: "Colecistectomia Laparoscópica"
     },
     {
       icon: Heart,
-      text: "Cirurgia para Diástase Abdominal"
+      text: "Correção de Hérnia"
     },
     {
       icon: Scissors,
-      text: "Ressecção de Tumores do Aparelho Digestivo"
+      text: "Cirurgia de Diástase"
     },
     {
       icon: Activity,
-      text: "Cirurgia Colorretal Laparoscópica"
+      text: "Cirurgia Colorretal"
     },
     {
       icon: Stethoscope,
-      text: "Tratamento Cirúrgico de Hemorroidas"
+      text: "Tratamento cirúrgico de hemorroidas"
     },
     {
       icon: Zap,
-      text: "Correção de Fissuras e Fístulas Anorretais"
+      text: "Correção de fissuras e fístulas"
     },
   ];
 
