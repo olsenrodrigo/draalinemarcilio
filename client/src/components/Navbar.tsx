@@ -74,7 +74,7 @@ export default function Navbar({ activeSection = "hero", scrollToSection }: Navb
                 onClick={() => handleNav(item.id)}
                 className="relative text-sm font-medium transition-colors cursor-pointer hover:opacity-80"
                 style={{
-                  color: activeSection === item.id ? "#5B8C9B" : "#494949"
+                  color: activeSection === item.id ? "#2E7D52" : "#494949"
                 }}
               >
                 {item.label}
@@ -82,7 +82,7 @@ export default function Navbar({ activeSection = "hero", scrollToSection }: Navb
                   <motion.div
                     layoutId="activeSection"
                     className="absolute -bottom-1 left-0 right-0 h-0.5"
-                    style={{ background: "#5B8C9B" }}
+                    style={{ background: "#2E7D52" }}
                   />
                 )}
               </motion.button>
@@ -121,7 +121,7 @@ export default function Navbar({ activeSection = "hero", scrollToSection }: Navb
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             className="lg:hidden py-4 border-t"
-            style={{ borderColor: "rgba(91, 140, 155, 0.2)" }}
+            style={{ borderColor: "rgba(46, 125, 82, 0.2)" }}
           >
             {menuItems.map((item) => (
               <button
@@ -130,7 +130,7 @@ export default function Navbar({ activeSection = "hero", scrollToSection }: Navb
                 className="block w-full text-left px-4 py-3 text-sm font-medium transition-colors hover:opacity-90 cursor-pointer"
                 style={{
                   color: activeSection === item.id ? "#5B8C9B" : "#494949",
-                  backgroundColor: activeSection === item.id ? "#EDF2F4" : "transparent"
+                  backgroundColor: activeSection === item.id ? "#EBF3EE" : "transparent"
                 }}
               >
                 {item.label}

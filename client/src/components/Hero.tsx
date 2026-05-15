@@ -22,14 +22,14 @@ export default function Hero({ scrollToSection }: HeroProps) {
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(135deg, #1a2e3b 0%, #2C3E50 40%, #3d6b7a 100%)" }}
+          style={{ background: "linear-gradient(135deg, #0D2218 0%, #1A3D2B 40%, #2A5E40 100%)" }}
         />
         <div
           className="absolute inset-0"
-          style={{ background: "linear-gradient(to right, rgba(26,46,59,0.97) 0%, rgba(44,62,80,0.80) 55%, rgba(44,62,80,0.20) 100%)" }}
+          style={{ background: "linear-gradient(to right, rgba(13,34,24,0.97) 0%, rgba(26,61,43,0.80) 55%, rgba(26,61,43,0.20) 100%)" }}
         />
 
-        {/* Logo símbolo como watermark — mix-blend-mode:screen blende corretamente em fundo escuro */}
+        {/* Logo símbolo como watermark */}
         <img
           src={logoSimbolo}
           alt=""
@@ -49,42 +49,36 @@ export default function Hero({ scrollToSection }: HeroProps) {
       </div>
 
       {/* Conteúdo */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-20 pb-16">
         <div className="max-w-2xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Badge especialidade */}
-            <div
-              className="inline-block px-4 py-2 backdrop-blur-sm border rounded-full mb-5"
-              style={{ backgroundColor: "rgba(91,140,155,0.2)", borderColor: "rgba(91,140,155,0.35)" }}
-            >
-              <span className="text-sm font-medium" style={{ color: "#EDF2F4" }}>
-                Cirurgia Digestiva · Coloproctologia · Cirurgia Bariátrica
-              </span>
-            </div>
-
             {/* Headline */}
-            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
-              Sua saúde digestiva em{" "}
-              <span style={{ color: "#5B8C9B" }}>mãos experientes</span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+              Sua saúde digestiva{" "}
+              <span style={{ color: "#5DBE83" }}>em mãos experientes</span>
             </h2>
 
             {/* Nome */}
-            <p className="text-base sm:text-lg mb-2 font-semibold leading-snug" style={{ color: "#EDF2F4" }}>
-              Dra. Aline Marcilio Alves — Cirurgiã do Aparelho Digestivo e Coloproctologista
+            <p className="text-base sm:text-lg mb-2 font-semibold leading-snug" style={{ color: "#EBF3EE" }}>
+              Dra. Aline Marcilio Alves
+            </p>
+            <p className="text-sm sm:text-base mb-4 font-medium" style={{ color: "rgba(235,243,238,0.8)" }}>
+              Cirurgiã do Aparelho Digestivo e Coloproctologista
             </p>
 
-            {/* Descrição da copy */}
-            <p className="text-sm sm:text-base mb-6 leading-relaxed" style={{ color: "rgba(237,242,244,0.85)" }}>
+            {/* Descrição */}
+            <p className="text-sm sm:text-base mb-4 leading-relaxed" style={{ color: "rgba(235,243,238,0.85)" }}>
               Formada pela FMUSP com residência e subespecialização no Hospital das Clínicas,
               a Dra. Aline oferece diagnóstico preciso e tratamento cirúrgico com foco em resultados
-              seguros e duradouros, sempre com técnica apurada e cuidado individualizado. Incorpora
-              um modelo de atendimento abrangente baseado nos pilares da Lifestyle Medicine, com
-              formação complementar em Harvard (2019), integrando saúde digestiva, hábitos e
-              qualidade de vida.
+              seguros e duradouros, sempre com técnica apurada e cuidado individualizado.
+            </p>
+            <p className="text-sm sm:text-base mb-6 leading-relaxed" style={{ color: "rgba(235,243,238,0.75)" }}>
+              Incorpora um modelo de atendimento abrangente baseado nos pilares da Lifestyle Medicine,
+              com formação complementar em Harvard (2019), integrando saúde digestiva, hábitos e qualidade de vida.
             </p>
 
             {/* CTAs */}
@@ -96,10 +90,10 @@ export default function Hero({ scrollToSection }: HeroProps) {
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
                 className="group px-7 py-3.5 text-white rounded-full font-medium flex items-center justify-center gap-2 hover:shadow-xl transition-all text-sm sm:text-base"
-                style={{ background: "#5B8C9B" }}
+                style={{ background: "#2E7D52" }}
               >
                 <Calendar size={18} />
-                Agendar Consulta — WhatsApp
+                Agendar Consulta
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </motion.a>
 
@@ -130,19 +124,14 @@ export default function Hero({ scrollToSection }: HeroProps) {
               { value: "FMUSP", label: "Formação Acadêmica" },
             ].map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-2xl sm:text-3xl font-bold text-white mb-0.5">{stat.value}</div>
-                <div className="text-xs sm:text-sm" style={{ color: "#EDF2F4" }}>{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-bold mb-0.5" style={{ color: "#5DBE83" }}>{stat.value}</div>
+                <div className="text-xs sm:text-sm" style={{ color: "rgba(235,243,238,0.8)" }}>{stat.label}</div>
               </div>
             ))}
           </motion.div>
         </div>
       </div>
 
-      {/* Fade inferior */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-24 z-10"
-        style={{ background: "linear-gradient(to top, #FFFFFF, transparent)" }}
-      />
     </div>
   );
 }

@@ -17,19 +17,19 @@
    */
 
   /* Primary: Cor principal de destaque */
-  --color-primary: #5B8C9B;
+  --color-primary: #2E7D52;
   --color-primary-foreground: #FFFFFF;
 
   /* Secondary: Cor de contraste/escura */
-  --color-secondary: #2C3E50;
+  --color-secondary: #1A3D2B;
   --color-secondary-foreground: #FFFFFF;
 
   /* Muted: Fundo alternado das secoes */
-  --color-muted: #EDF2F4;
+  --color-muted: #EBF3EE;
   --color-muted-foreground: #3C3C3C;
 
   /* Accent: Footer e overlays */
-  --color-accent: #4C4C4C;
+  --color-accent: #1A3D2B;
   --color-accent-foreground: #FFFFFF;
 
   /* Neutrals & Text */
@@ -45,7 +45,7 @@
   /* Borders */
   --color-border: #EFEFEF;
   --color-input: #EFEFEF;
-  --color-ring: #5B8C9B;
+  --color-ring: #2E7D52;
 
   /* Semantic */
   --color-destructive: 0 84% 60%;
@@ -89,7 +89,7 @@
     @apply container mx-auto px-4 md:px-6 max-w-7xl;
   }
   .bg-alt {
-    background-color: #EDF2F4;
+    background-color: #EBF3EE;
   }
   .bg-neutral-gray {
     background-color: #EFEFEF;
