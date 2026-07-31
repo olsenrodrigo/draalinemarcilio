@@ -1,63 +1,63 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
-import Services from "@/components/Services";
+import Areas from "@/components/Areas";
 import Treatments from "@/components/Treatments";
 import Differentials from "@/components/Differentials";
 import Locations from "@/components/Locations";
-import FAQ from "@/components/FAQ";
-import HowItWorks from "@/components/HowItWorks";
+import Testimonials from "@/components/Testimonials";
+import Education from "@/components/Education";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 
-export default function Home() {
-  const [activeSection, setActiveSection] = useState("hero");
-
-  const scrollToSection = (sectionId: string) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
-
+/** Revela os blocos .reveal conforme entram na viewport. */
+function useReveal() {
   useEffect(() => {
-    const sections = ["hero", "about", "services", "treatments", "differentials", "locations", "faq", "how-it-works", "contact"];
+    const targets = Array.from(document.querySelectorAll<HTMLElement>(".reveal"));
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      targets.forEach((el) => el.classList.add("reveal-in"));
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+            entry.target.classList.add("reveal-in");
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.3 }
+      // margem inferior positiva: o bloco já entra revelado, sem "buraco" branco ao rolar rápido
+      { rootMargin: "0px 0px 12% 0px", threshold: 0 }
     );
 
-    sections.forEach((id) => {
-      const el = document.getElementById(id);
-      if (el) observer.observe(el);
-    });
-
+    targets.forEach((el) => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+}
+
+export default function Home() {
+  useReveal();
 
   return (
-    <div className="min-h-screen bg-white">
-      <Navbar activeSection={activeSection} scrollToSection={scrollToSection} />
+    <>
+      <StructuredData />
+      <Navbar />
       <main>
-        <Hero scrollToSection={scrollToSection} />
+        <Hero />
         <About />
-        <Services />
+        <Areas />
         <Treatments />
         <Differentials />
         <Locations />
-        <FAQ />
-        <HowItWorks />
+        <Testimonials />
+        <Education />
         <Contact />
       </main>
       <Footer />
-    </div>
+    </>
   );
 }

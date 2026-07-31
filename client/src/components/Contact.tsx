@@ -1,212 +1,162 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Send, CheckCircle2, Loader2, MapPin, Phone, Mail } from "lucide-react";
+import { ArrowRight, CheckCircle2, Mail, MapPin, MessageCircle } from "lucide-react";
+import { AGENDAR_TEXTO, EMAIL, WHATSAPP_DISPLAY, site, whatsappUrl } from "@/content/site";
+
+type Status = "idle" | "loading" | "success" | "error";
+
+const emptyForm = { name: "", email: "", phone: "", message: "" };
+type Field = keyof typeof emptyForm;
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", phone: "", email: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [form, setForm] = useState(emptyForm);
+  const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
+  const [status, setStatus] = useState<Status>("idle");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.name || !formData.phone || !formData.email || !formData.message) return;
+  const validate = () => {
+    const found: Partial<Record<Field, string>> = {};
+    (Object.keys(emptyForm) as Field[]).forEach((field) => {
+      if (!form[field].trim()) found[field] = site.form.required;
+    });
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(form.email)) {
+      found.email = site.form.invalidEmail;
+    }
+    setErrors(found);
+    return Object.keys(found).length === 0;
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (!validate()) return;
 
     setStatus("loading");
     try {
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(form),
       });
-      if (!res.ok) throw new Error("Erro ao enviar");
+      if (!response.ok) throw new Error("request failed");
+      setForm(emptyForm);
       setStatus("success");
-      setFormData({ name: "", phone: "", email: "", message: "" });
     } catch {
       setStatus("error");
     }
   };
 
+  const update = (field: Field, value: string) => {
+    setForm((current) => ({ ...current, [field]: value }));
+    if (errors[field]) setErrors((current) => ({ ...current, [field]: undefined }));
+  };
+
   return (
-    <section id="contact" className="py-24" style={{ backgroundColor: "#EFEFEF" }}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
-          <div className="inline-block px-4 py-2 rounded-full mb-6" style={{ backgroundColor: "rgba(46, 125, 82, 0.15)" }}>
-            <span className="text-sm font-medium" style={{ color: "#1A3D2B" }}>Entre em Contato</span>
-          </div>
+    <section id="contato" className="section section-wash">
+      <div className="container">
+        <div className="section-head reveal">
+          <span className="eyebrow">{site.form.eyebrow}</span>
+          <h2>{site.form.title}</h2>
+          <p>{site.form.intro}</p>
+        </div>
 
-          <h3 className="text-4xl md:text-5xl font-bold mb-6" style={{ color: "#212529" }}>
-            Agende sua consulta
-          </h3>
+        <div className="contact-grid reveal">
+          <ul className="contact-details">
+            <li>
+              <strong>
+                <MapPin strokeWidth={1.5} aria-hidden="true" />
+                Endereço
+              </strong>
+              <address>{`Clínica Alumia\n${site.footer.address}`}</address>
+            </li>
+            <li>
+              <strong>
+                <MessageCircle strokeWidth={1.5} aria-hidden="true" />
+                WhatsApp
+              </strong>
+              <p>
+                <a href={whatsappUrl(AGENDAR_TEXTO)} target="_blank" rel="noreferrer">
+                  {WHATSAPP_DISPLAY}
+                </a>
+              </p>
+            </li>
+            <li>
+              <strong>
+                <Mail strokeWidth={1.5} aria-hidden="true" />
+                E-mail
+              </strong>
+              <p>
+                <a href={`mailto:${EMAIL}`}>{EMAIL}</a>
+              </p>
+            </li>
+          </ul>
 
-          <p className="text-xl max-w-3xl mx-auto" style={{ color: "#3C3C3C" }}>
-            Atendimento particular. Preencha o formulário ou entre em contato direto pelo WhatsApp
-            — nossa equipe responde com agilidade.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div className="bg-white rounded-2xl p-6 shadow-sm border" style={{ borderColor: "rgba(46, 125, 82, 0.15)" }}>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#EBF3EE" }}>
-                  <MapPin className="w-5 h-5" style={{ color: "#2E7D52" }} />
-                </div>
-                <div>
-                  <p className="font-bold mb-1" style={{ color: "#212529" }}>Endereço</p>
-                  <p className="text-sm" style={{ color: "#3C3C3C" }}>
-                    Clínica Alumia<br />
-                    Alameda Campinas, 1100 — 11º andar<br />
-                    Jardins — São Paulo/SP
-                  </p>
-                </div>
-              </div>
+          {status === "success" ? (
+            <div className="form-success">
+              <h3>
+                <CheckCircle2 strokeWidth={1.5} aria-hidden="true" />
+                {site.form.successTitle}
+              </h3>
+              <p>{site.form.successText}</p>
+              <button type="button" className="button button-ghost" onClick={() => setStatus("idle")}>
+                {site.form.successAction}
+              </button>
             </div>
+          ) : (
+            <form className="contact-form" onSubmit={handleSubmit} noValidate>
+              <label>
+                {site.form.labels.name}
+                <input
+                  type="text"
+                  value={form.name}
+                  placeholder={site.form.placeholders.name}
+                  aria-invalid={!!errors.name}
+                  onChange={(event) => update("name", event.target.value)}
+                />
+                {errors.name && <span className="error">{errors.name}</span>}
+              </label>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm border" style={{ borderColor: "rgba(46, 125, 82, 0.15)" }}>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#EBF3EE" }}>
-                  <Phone className="w-5 h-5" style={{ color: "#2E7D52" }} />
-                </div>
-                <div>
-                  <p className="font-bold mb-1" style={{ color: "#212529" }}>Contato</p>
-                  <p className="text-sm" style={{ color: "#3C3C3C" }}>
-                    WhatsApp: (11) 93335-3033
-                  </p>
-                  <a
-                    href="https://wa.me/5511933353033"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block mt-3 px-4 py-2 text-white text-sm rounded-full font-medium transition-all hover:opacity-90"
-                    style={{ background: "#25D366" }}
-                  >
-                    Chamar no WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
+              <label>
+                {site.form.labels.email}
+                <input
+                  type="email"
+                  value={form.email}
+                  placeholder={site.form.placeholders.email}
+                  aria-invalid={!!errors.email}
+                  onChange={(event) => update("email", event.target.value)}
+                />
+                {errors.email && <span className="error">{errors.email}</span>}
+              </label>
 
-            <div className="bg-white rounded-2xl p-6 shadow-sm border" style={{ borderColor: "rgba(46, 125, 82, 0.15)" }}>
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#EBF3EE" }}>
-                  <Mail className="w-5 h-5" style={{ color: "#2E7D52" }} />
-                </div>
-                <div>
-                  <p className="font-bold mb-1" style={{ color: "#212529" }}>E-mail</p>
-                  <p className="text-sm" style={{ color: "#3C3C3C" }}>
-                    contato@draalinealves.com.br
-                  </p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+              <label>
+                {site.form.labels.phone}
+                <input
+                  type="tel"
+                  value={form.phone}
+                  placeholder={site.form.placeholders.phone}
+                  aria-invalid={!!errors.phone}
+                  onChange={(event) => update("phone", event.target.value)}
+                />
+                {errors.phone && <span className="error">{errors.phone}</span>}
+              </label>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-2"
-          >
-            <div className="bg-white rounded-2xl p-8 md:p-10 shadow-xl">
-              {status === "success" ? (
-                <div className="flex flex-col items-center justify-center py-12 text-center">
-                  <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
-                  <h4 className="text-xl font-bold mb-2" style={{ color: "#1A3D2B" }}>Mensagem Enviada!</h4>
-                  <p className="mb-6" style={{ color: "#3C3C3C" }}>Entraremos em contato em breve para confirmar seu agendamento.</p>
-                  <button
-                    onClick={() => setStatus("idle")}
-                    className="px-6 py-2 rounded-lg border font-medium transition-colors hover:bg-gray-50 cursor-pointer"
-                    style={{ borderColor: "rgba(46, 125, 82, 0.3)", color: "#1A3D2B" }}
-                  >
-                    Enviar outra mensagem
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div className="grid sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="block text-sm font-medium mb-2" style={{ color: "#212529" }}>Nome</label>
-                      <input
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all outline-none"
-                        style={{ borderColor: "rgba(46, 125, 82, 0.3)" }}
-                        placeholder="Seu nome"
-                      />
-                    </div>
+              <label>
+                {site.form.labels.message}
+                <textarea
+                  rows={4}
+                  value={form.message}
+                  placeholder={site.form.placeholders.message}
+                  aria-invalid={!!errors.message}
+                  onChange={(event) => update("message", event.target.value)}
+                />
+                {errors.message && <span className="error">{errors.message}</span>}
+              </label>
 
-                    <div>
-                      <label className="block text-sm font-medium mb-2" style={{ color: "#212529" }}>Telefone</label>
-                      <input
-                        type="tel"
-                        required
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all outline-none"
-                        style={{ borderColor: "rgba(46, 125, 82, 0.3)" }}
-                        placeholder="(11) 99999-9999"
-                      />
-                    </div>
-                  </div>
+              {status === "error" && <span className="error">{site.form.error}</span>}
 
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#212529" }}>E-mail</label>
-                    <input
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all outline-none"
-                      style={{ borderColor: "rgba(46, 125, 82, 0.3)" }}
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium mb-2" style={{ color: "#212529" }}>Mensagem</label>
-                    <textarea
-                      required
-                      rows={4}
-                      value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                      className="w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all resize-none outline-none"
-                      style={{ borderColor: "rgba(46, 125, 82, 0.3)" }}
-                      placeholder="Descreva brevemente o motivo da consulta..."
-                    />
-                  </div>
-
-                  {status === "error" && (
-                    <p className="text-red-500 text-sm">Ocorreu um erro ao enviar. Tente novamente ou entre em contato pelo WhatsApp.</p>
-                  )}
-
-                  <motion.button
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    type="submit"
-                    disabled={status === "loading"}
-                    className="w-full px-8 py-4 text-white rounded-xl font-semibold flex items-center justify-center gap-2 hover:shadow-xl transition-all cursor-pointer disabled:opacity-70"
-                    style={{ background: "linear-gradient(135deg, #2E7D52 0%, #1A3D2B 100%)" }}
-                  >
-                    {status === "loading" ? (
-                      <><Loader2 className="w-5 h-5 animate-spin" /> Enviando...</>
-                    ) : (
-                      <>Enviar mensagem <Send size={20} /></>
-                    )}
-                  </motion.button>
-                </form>
-              )}
-            </div>
-          </motion.div>
+              <button className="button" type="submit" disabled={status === "loading"}>
+                {status === "loading" ? site.form.sending : site.form.submit}
+                <ArrowRight />
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>
