@@ -1,6 +1,6 @@
 import { Star } from "lucide-react";
 import { AGENDAR_TEXTO, site, whatsappUrl } from "@/content/site";
-import logoSimbolo from "@/assets/images/logo-simbolo.png";
+import { LogoMark } from "@/components/Logo";
 
 export default function Testimonials() {
   return (
@@ -34,7 +34,7 @@ export default function Testimonials() {
 
       <section className="final-cta">
         <div className="container reveal">
-          <img src={logoSimbolo} alt="" loading="lazy" width={54} height={54} />
+          <LogoMark className="final-cta-mark" />
           <h2>{site.finalCta.title}</h2>
           <p>{site.finalCta.text}</p>
           <a className="button button-light" href={whatsappUrl(AGENDAR_TEXTO)} target="_blank" rel="noreferrer">

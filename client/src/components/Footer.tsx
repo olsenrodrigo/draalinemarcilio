@@ -1,5 +1,5 @@
 import { CRM, EMAIL, INSTAGRAM, site, whatsappUrl } from "@/content/site";
-import logoSimbolo from "@/assets/images/logo-simbolo.png";
+import { LogoLockup } from "@/components/Logo";
 
 function InstagramIcon() {
   return (
@@ -33,9 +33,9 @@ export default function Footer() {
         <div className="footer-grid">
           <div>
             <div className="footer-brand">
-              <img src={logoSimbolo} alt="" loading="lazy" width={40} height={40} />
-              <span>{site.doctor}</span>
+              <LogoLockup title={site.doctor} />
             </div>
+            <p className="footer-name">{site.doctor}</p>
             <p className="footer-role">{site.specialty}</p>
             <p className="footer-crm">{CRM}</p>
             <address>{site.footer.address}</address>

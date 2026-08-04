@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AGENDAR_TEXTO, site, whatsappUrl } from "@/content/site";
-import logoCompleto from "@/assets/images/logo-completo.png";
+import { LogoLockup } from "@/components/Logo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -18,8 +18,8 @@ export default function Navbar() {
     <header className={`header${scrolled || open ? " header-scrolled" : ""}`}>
       <div className="container">
         <div className="header-inner">
-          <a href="#inicio" className="header-logo" onClick={() => setOpen(false)}>
-            <img src={logoCompleto} alt={site.doctor} />
+          <a href="#inicio" className="header-logo" aria-label={site.doctor} onClick={() => setOpen(false)}>
+            <LogoLockup />
           </a>
 
           <nav className="header-nav" aria-label="Navegação principal">
