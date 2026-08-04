@@ -5,11 +5,22 @@ import path from 'path';
 /**
  * Vite plugin that updates og:image and twitter:image meta tags
  * to point to the app's opengraph image with the correct Replit domain.
+ *
+ * Só age quando a tag ainda aponta para um caminho relativo. Se o
+ * index.html já traz a URL absoluta do domínio próprio, ela vence: em
+ * build no Replit este plugin trocaria a URL canônica pela do Replit e
+ * derrubaria o `?v=` que força WhatsApp/Facebook a rebaixarem o cache.
  */
 export function metaImagesPlugin(): Plugin {
   return {
     name: 'vite-plugin-meta-images',
     transformIndexHtml(html) {
+      const currentOgImage = html.match(/<meta\s+property="og:image"\s+content="([^"]*)"/)?.[1];
+      if (currentOgImage && /^https?:\/\//i.test(currentOgImage)) {
+        log('[meta-images] og:image já é absoluta, mantendo:', currentOgImage);
+        return html;
+      }
+
       const baseUrl = getDeploymentUrl();
       if (!baseUrl) {
         log('[meta-images] no Replit deployment domain found, skipping meta tag updates');

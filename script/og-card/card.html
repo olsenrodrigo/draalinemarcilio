@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>OG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --paper: #FDFBFA;
+    --blush: #F2E1DA;
+    --sage: #78A892;
+    --green: #335756;
+    --deep: #283E3F;
+    --ink: #1E2C2C;
+    --muted: #5B6866;
+    --serif: 'Source Serif 4', Georgia, serif;
+    --sans: 'Figtree', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #fff; }
+  body { -webkit-font-smoothing: antialiased; }
+
+  .og {
+    position: absolute; top: 0; left: 0;
+    width: 1200px; height: 630px;
+    display: grid; grid-template-columns: 730px 470px;
+    font-family: var(--sans); background: var(--blush);
+    overflow: hidden;
+  }
+
+  .og-copy { display: flex; flex-direction: column; justify-content: center; padding: 0 68px; }
+
+  .og-logo { display: block; width: 372px; height: auto; color: var(--ink); margin-bottom: 34px; }
+  .og-logo path { vector-effect: non-scaling-stroke; stroke-width: 1px; }
+
+  .og-rule { width: 64px; height: 2px; background: var(--green); margin-bottom: 30px; }
+
+  .og-name { font-family: var(--serif); font-size: 46px; font-weight: 500; line-height: 1.1; letter-spacing: -.02em; color: var(--ink); margin-bottom: 14px; }
+  .og-role { font-size: 24px; font-weight: 500; line-height: 1.4; color: var(--green); margin-bottom: 30px; text-wrap: balance; }
+  .og-meta { font-size: 18px; line-height: 1.6; color: var(--muted); }
+  .og-meta strong { display: block; font-weight: 600; color: var(--deep); }
+
+  .og-figure { position: relative; }
+  .og-figure img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; }
+  /* filete da marca separando foto e copy */
+  .og-figure::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--sage); z-index: 1; }
+</style>
+</head>
+<body>
+  <div class="og">
+    <div class="og-copy">
+      <svg class="og-logo" viewBox="0 0 1643.35 306.39" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <g fill="currentColor" stroke="currentColor" id="word"></g>
+        <path id="mark" fill="#335756" stroke="#335756" fill-rule="nonzero" transform="translate(-188.73 -855.55)" />
+      </svg>
+
+      <div class="og-rule"></div>
+
+      <h1 class="og-name">Dra. Aline<br />Marcilio Alves</h1>
+      <p class="og-role">Cirurgiã do Aparelho Digestivo e Coloproctologista</p>
+      <p class="og-meta">
+        <strong>CRM 144.320/SP · RQE 72.325</strong>
+        Atendimento particular · Jardins — São Paulo/SP
+      </p>
+    </div>
+
+    <figure class="og-figure">
+      <img src="../../client/src/assets/images/aline-hero.jpg" alt="" />
+    </figure>
+  </div>
+
+  <script type="module">
+    // Reaproveita os mesmos caminhos vetoriais do componente Logo.tsx do site.
+    const res = await fetch('./logo-paths.json');
+    const { word, mark } = await res.json();
+    document.getElementById('word').innerHTML = word
+      .map(p => `<path d="${p.d}" transform="translate(${p.dx} ${p.dy})" />`).join('');
+    document.getElementById('mark').setAttribute('d', mark);
+    document.body.dataset.ready = '1';
+  </script>
+</body>
+</html>
