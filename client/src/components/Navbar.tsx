@@ -15,7 +15,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <header className={`header${scrolled || open ? " header-scrolled" : ""}`}>
+    <header className={`header brand-plate${scrolled || open ? " header-scrolled" : ""}`}>
       <div className="container">
         <div className="header-inner">
           <a href="#inicio" className="header-logo" aria-label={site.doctor} onClick={() => setOpen(false)}>

@@ -5,3 +5,10 @@ dist/
 .env.*.local
 *.log
 .DS_Store
+
+# Fontes de arte do manual da marca: os .ai/.eps/.pdf somam ~90 MB e o
+# git carregaria esse peso para sempre. O que o site consome (PNG/SVG/
+# JPG) fica versionado; os editáveis moram no drive da agência.
+inputs/**/*.ai
+inputs/**/*.eps
+inputs/**/*.pdf

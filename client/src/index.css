@@ -2,16 +2,18 @@
 @import "tailwindcss";
 
 /* =========================================================
-   Paleta — extraída do logo (imgs/logo_v3.pdf). O verde do
-   fundo do logo (#78A892) é a cor-âncora; o verde profundo do
-   monograma e o nude da prancha completam a família. Tons
-   pastéis e hairlines mantêm o layout leve.
+   Paleta — extraída do manual da marca (inputs/Logo_Dra_Aline).
+   O verde pastel da prancha "Versão 01/v3" (#85A797) é a
+   cor-âncora; o verde profundo do monograma e o nude da prancha
+   completam a família. Tons pastéis e hairlines mantêm o
+   layout leve.
    ========================================================= */
 :root {
   --paper: #FDFBFA;        /* fundo geral — branco quente */
   --wash: #F6EFEB;         /* fundo de seção alternada — nude diluído */
   --blush: #F2E1DA;        /* nude do logo */
-  --sage: #78A892;         /* VERDE DO LOGO — faixas e superfícies */
+  --sage: #85A797;         /* VERDE PASTEL DO MANUAL — prancha do logo, faixas */
+  --sage-ink: #2D5A54;     /* verde do monograma sobre a prancha verde */
   --sage-soft: #DEEAE4;    /* pastel do verde — filetes e realces */
   --sage-deep: #5D8E77;    /* verde do logo escurecido — ícones (3:1 no claro) */
   --card: #FFFFFF;
@@ -107,26 +109,55 @@ address { font-style: normal; }
 .logo { display: block; width: auto; overflow: visible; }
 .logo path { vector-effect: non-scaling-stroke; stroke-width: var(--logo-weight, 0); }
 
+/* ---------- prancha da marca ----------
+   Reproduz a prancha "Versão 01/v3" do manual: logotipo branco e
+   monograma no verde profundo sobre o verde pastel. A textura são
+   três camadas de contraste baixíssimo — uma luz difusa atrás do
+   logo, uma trama diagonal fina e um grão de papel — que dão
+   superfície ao verde sem acrescentar peso nem sombra. */
+.brand-plate {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--sage);
+  background-image:
+    radial-gradient(42% 150% at var(--plate-light, 14%) 48%, rgba(255, 255, 255, .26), rgba(255, 255, 255, 0) 68%),
+    repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 1px, rgba(255, 255, 255, 0) 1px 5px),
+    repeating-linear-gradient(38deg, rgba(27, 65, 59, .05) 0 1px, rgba(27, 65, 59, 0) 1px 9px);
+}
+/* Grão em feTurbulence via data-URI: textura sem requisição de rede. O
+   ruído é dessaturado e opaco (saturate 0 + alfa 1) para que o
+   `soft-light` só module a luz — ruído colorido ou translúcido lavaria
+   o verde para o cinza. `color-interpolation-filters: sRGB` mantém o
+   ruído centrado em 0,5: no linearRGB padrão ele sai claro demais e
+   clareia a prancha inteira. z-index negativo o mantém acima do fundo
+   e abaixo do conteúdo. */
+.brand-plate::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  border-radius: inherit; opacity: .45; mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0' intercept='1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+/* Sobre a prancha o logo vai branco, como no manual. O verde pastel é
+   um meio-tom, então os fios da tipografia ganham peso extra. */
+.brand-plate .logo { color: #fff; --logo-mark: var(--sage-ink); }
+
 /* ---------- header ---------- */
 .header {
   position: fixed; inset: 0 0 auto; z-index: 50;
-  background: color-mix(in srgb, var(--paper) 92%, transparent);
-  backdrop-filter: blur(10px);
   border-bottom: 1px solid transparent;
   transition: border-color .25s;
 }
-.header-scrolled { border-bottom-color: var(--line); }
+.header .container { position: relative; }
+.header-scrolled { border-bottom-color: rgba(27, 65, 59, .22); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: 78px; }
-/* Logo horizontal: proporção 5,36:1 — a altura manda, a largura acompanha.
-   Tipografia no grafite da marca, monograma no verde profundo do logo. */
-.header-logo { display: block; color: var(--ink); --logo-mark: var(--green); --logo-weight: .8px; }
-.header-logo .logo { height: 32px; }
+/* Logo horizontal: proporção 5,36:1 — a altura manda, a largura acompanha. */
+.header-logo { display: block; --logo-weight: 1px; }
+.header-logo .logo { height: 34px; }
 .header-nav { display: none; align-items: center; gap: 1.55rem; font-size: .88rem; font-weight: 500; }
-.header-nav a:hover { color: var(--green); }
+.header-nav a:hover { color: var(--deep); }
 .header-nav .button { margin-left: .35rem; }
 .menu-button { display: inline-flex; padding: .5rem; border: 0; background: none; cursor: pointer; }
-.mobile-nav { display: flex; flex-direction: column; padding: .5rem 0 1.5rem; border-top: 1px solid var(--line); }
-.mobile-nav a { padding: .8rem 0; font-size: .95rem; font-weight: 500; border-bottom: 1px solid var(--line); }
+.mobile-nav { display: flex; flex-direction: column; padding: .5rem 0 1.5rem; border-top: 1px solid rgba(27, 65, 59, .2); }
+.mobile-nav a { padding: .8rem 0; font-size: .95rem; font-weight: 500; border-bottom: 1px solid rgba(27, 65, 59, .2); }
 .mobile-nav .button { margin-top: 1.25rem; }
 
 /* ---------- hero ---------- */
@@ -265,9 +296,14 @@ address { font-style: normal; }
 .footer p, .footer address, .footer a { color: rgba(240, 234, 231, .72); }
 .footer a:hover { color: #fff; }
 .footer-grid { display: grid; gap: 2.5rem; }
-/* No escuro o logo vira nude/creme (variante 4 da prancha da marca). */
-.footer-brand { margin-bottom: 1.15rem; color: var(--blush); --logo-mark: #fff; --logo-weight: .7px; }
-.footer-brand .logo { height: 36px; }
+/* Mesma prancha do cabeçalho, aqui reduzida a um selo: o logo aparece
+   sobre o verde do manual nas duas pontas da página. */
+.footer-brand {
+  display: inline-block; margin-bottom: 1.35rem;
+  padding: .95rem 1.45rem; border-radius: var(--radius);
+  --logo-weight: .9px; --plate-light: 50%;
+}
+.footer-brand .logo { height: 34px; }
 .footer .footer-name { margin-bottom: .15rem; font-family: var(--serif); font-size: 1.12rem; color: #fff; }
 .footer h4 { margin-bottom: 1.1rem; font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 234, 231, .6); }
 .footer-role { margin-bottom: .3rem; font-size: .92rem; }
