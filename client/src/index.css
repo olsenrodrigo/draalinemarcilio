@@ -16,6 +16,7 @@
   --sage-ink: #2D5A54;     /* verde do monograma sobre a prancha verde */
   --sage-soft: #DEEAE4;    /* pastel do verde — filetes e realces */
   --sage-deep: #5D8E77;    /* verde do logo escurecido — ícones (3:1 no claro) */
+  --forest: #1B413B;       /* prancha escura do manual ("Versão 02/v3") — rodapé */
   --card: #FFFFFF;
   --green: #335756;        /* verde profundo do monograma: botões, eyebrows, links */
   --deep: #283E3F;         /* verde-carvão — blocos de contraste */
@@ -120,7 +121,7 @@ address { font-style: normal; }
   isolation: isolate;
   background-color: var(--sage);
   background-image:
-    radial-gradient(42% 150% at var(--plate-light, 14%) 48%, rgba(255, 255, 255, .26), rgba(255, 255, 255, 0) 68%),
+    radial-gradient(42% 150% at 14% 48%, rgba(255, 255, 255, .26), rgba(255, 255, 255, 0) 68%),
     repeating-linear-gradient(135deg, rgba(255, 255, 255, .05) 0 1px, rgba(255, 255, 255, 0) 1px 5px),
     repeating-linear-gradient(38deg, rgba(27, 65, 59, .05) 0 1px, rgba(27, 65, 59, 0) 1px 9px);
 }
@@ -292,28 +293,30 @@ address { font-style: normal; }
 .form-success svg { width: 22px; height: 22px; color: var(--sage-deep); }
 
 /* ---------- rodapé ---------- */
-.footer { padding: clamp(3rem, 5vw, 4.5rem) 0 1.75rem; background: var(--ink); color: #EFEAE7; }
+.footer { padding: clamp(3rem, 5vw, 4.5rem) 0 1.75rem; background: var(--forest); color: #EFEAE7; }
 .footer p, .footer address, .footer a { color: rgba(240, 234, 231, .72); }
 .footer a:hover { color: #fff; }
 .footer-grid { display: grid; gap: 2.5rem; }
-/* Mesma prancha do cabeçalho, aqui reduzida a um selo: o logo aparece
-   sobre o verde do manual nas duas pontas da página. */
+/* A outra prancha do manual: a "Versão 02/v3" põe o logotipo em nude e o
+   monograma em branco direto sobre o verde escuro. O rodapé inteiro é essa
+   prancha — por isso o logo entra sem selo em volta, ao contrário do
+   cabeçalho, onde a faixa clara é que faz o fundo. */
 .footer-brand {
-  display: inline-block; margin-bottom: 1.35rem;
-  padding: .95rem 1.45rem; border-radius: var(--radius);
-  --logo-weight: .9px; --plate-light: 50%;
+  display: block; margin-bottom: 1.35rem;
+  --logo-weight: .8px; --logo-mark: #fff;
+  color: var(--blush);
 }
 .footer-brand .logo { height: 34px; }
 .footer .footer-name { margin-bottom: .15rem; font-family: var(--serif); font-size: 1.12rem; color: #fff; }
-.footer h4 { margin-bottom: 1.1rem; font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 234, 231, .6); }
+.footer h4 { margin-bottom: 1.1rem; font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 234, 231, .68); }
 .footer-role { margin-bottom: .3rem; font-size: .92rem; }
 .footer-crm { margin-bottom: 1.1rem; font-size: .85rem; }
 .footer address { white-space: pre-line; font-size: .9rem; }
 .footer-list { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; font-size: .9rem; }
-.footer-list span { color: rgba(240, 234, 231, .62); }
+.footer-list span { color: rgba(240, 234, 231, .68); }
 .footer-social { display: flex; gap: 1rem; margin-top: 1.4rem; }
 .footer-social svg { width: 19px; height: 19px; }
-.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(240, 234, 231, .14); font-size: .78rem; color: rgba(240, 234, 231, .55); }
+.footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .75rem; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(240, 234, 231, .18); font-size: .78rem; color: rgba(240, 234, 231, .62); }
 
 /* ---------- 404 ---------- */
 .not-found { display: grid; min-height: 100svh; place-content: center; justify-items: center; padding: 2rem; text-align: center; }

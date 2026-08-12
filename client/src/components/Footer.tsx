@@ -32,7 +32,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div>
-            <div className="footer-brand brand-plate">
+            <div className="footer-brand">
               <LogoLockup title={site.doctor} />
             </div>
             <p className="footer-name">{site.doctor}</p>
