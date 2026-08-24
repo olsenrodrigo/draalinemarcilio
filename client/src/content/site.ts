@@ -1,10 +1,14 @@
 // Todo o conteúdo do site em um lugar só. Textos seguem a copy aprovada (copy/novacopy.md).
 
-export const WHATSAPP_NUMBER = "5511933353033";
-export const WHATSAPP_DISPLAY = "(11) 93335-3033";
+export const WHATSAPP_NUMBER = "5511945004468";
+export const WHATSAPP_DISPLAY = "(11) 94500-4468";
 export const EMAIL = "contato@draalinealves.com.br";
 export const INSTAGRAM = "https://www.instagram.com/draaline.alves/";
 export const CRM = "CRM 144.320/SP · RQE 72.325";
+
+/** Os dois endereços de atendimento presencial. */
+export const ADDRESS_ALUMIA = "Alameda Campinas, 1100 — 11º andar\nJardins — São Paulo/SP";
+export const ADDRESS_EMNH = "Av. Marquês de São Vicente, 2219 — Conj. 316\nJardim das Perdizes — São Paulo/SP";
 
 export const whatsappUrl = (text?: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
@@ -152,7 +156,7 @@ export const site = {
     items: [
       {
         name: "Clínica Alumia",
-        address: "Alameda Campinas, 1100 — 11º andar\nJardins — São Paulo/SP",
+        address: ADDRESS_ALUMIA,
         contactLabel: "WhatsApp",
         contact: WHATSAPP_DISPLAY,
         href: whatsappUrl(),
@@ -161,21 +165,21 @@ export const site = {
       },
       {
         name: "EMNH",
-        address: null,
+        address: ADDRESS_EMNH,
         contactLabel: "Telefone",
         contact: "(11) 3615-2474",
         href: "tel:+551136152474",
-        map: null,
-        mapTitle: null,
+        map: "https://maps.google.com/maps?hl=pt-BR&q=Av.+Marqu%C3%AAs+de+S%C3%A3o+Vicente,+2219,+Jardim+das+Perdizes,+S%C3%A3o+Paulo,+SP&z=16&ie=UTF8&output=embed",
+        mapTitle: "Mapa da EMNH — Av. Marquês de São Vicente, 2219, Conj. 316, Jardim das Perdizes",
       },
       {
         name: "RMS Espaços Cirúrgicos",
-        address: "Av. Marquês de São Vicente, 2219\nConjs. 711, 713, 715 e 815 — Água Branca\nSão Paulo/SP",
+        address: null,
         contactLabel: "Telefone",
         contact: "(11) 5242-3246",
         href: "tel:+551152423246",
-        map: "https://maps.google.com/maps?hl=pt-BR&q=Av.+Marqu%C3%AAs+de+S%C3%A3o+Vicente,+2219,+%C3%81gua+Branca,+S%C3%A3o+Paulo,+SP&z=16&ie=UTF8&output=embed",
-        mapTitle: "Mapa da RMS Espaços Cirúrgicos — Av. Marquês de São Vicente, 2219, Água Branca",
+        map: null,
+        mapTitle: null,
       },
     ],
   },
@@ -269,7 +273,11 @@ export const site = {
   },
 
   footer: {
-    address: "Alameda Campinas, 1100 — 11º andar\nJardins — São Paulo/SP",
+    addressTitle: "Endereços de atendimento",
+    addresses: [
+      ["Clínica Alumia", ADDRESS_ALUMIA],
+      ["EMNH", ADDRESS_EMNH],
+    ] as const,
     contacts: [
       ["WhatsApp", WHATSAPP_DISPLAY, whatsappUrl()],
       ["EMNH", "(11) 3615-2474", "tel:+551136152474"],

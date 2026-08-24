@@ -38,7 +38,15 @@ export default function Footer() {
             <p className="footer-name">{site.doctor}</p>
             <p className="footer-role">{site.specialty}</p>
             <p className="footer-crm">{CRM}</p>
-            <address>{site.footer.address}</address>
+            <h5 className="footer-address-title">{site.footer.addressTitle}</h5>
+            <div className="footer-addresses">
+              {site.footer.addresses.map(([name, address]) => (
+                <div key={name}>
+                  <strong>{name}</strong>
+                  <address>{address}</address>
+                </div>
+              ))}
+            </div>
 
             <div className="footer-social">
               <a href={whatsappUrl()} target="_blank" rel="noreferrer" aria-label="WhatsApp">

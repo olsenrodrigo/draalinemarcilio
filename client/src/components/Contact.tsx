@@ -59,13 +59,15 @@ export default function Contact() {
 
         <div className="contact-grid reveal">
           <ul className="contact-details">
-            <li>
-              <strong>
-                <MapPin strokeWidth={1.5} aria-hidden="true" />
-                Endereço
-              </strong>
-              <address>{`Clínica Alumia\n${site.footer.address}`}</address>
-            </li>
+            {site.footer.addresses.map(([name, address]) => (
+              <li key={name}>
+                <strong>
+                  <MapPin strokeWidth={1.5} aria-hidden="true" />
+                  {name}
+                </strong>
+                <address>{address}</address>
+              </li>
+            ))}
             <li>
               <strong>
                 <MessageCircle strokeWidth={1.5} aria-hidden="true" />

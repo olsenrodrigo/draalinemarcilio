@@ -130,22 +130,21 @@ Unidade 1 — Clínica Alumia
 Alameda Campinas, 1100 — 11º andar
  Jardins — São Paulo/SP
 Contatos
-WhatsApp: (11) 93335-3033
+WhatsApp: (11) 94500-4468
 Mapa
 Inserir mapa incorporado da Clínica Alumia
 
 Unidade 2 — EMNH
+Av. Marquês de São Vicente, 2219 — Conj. 316
+ Jardim das Perdizes — São Paulo/SP
 Contato
 Telefone: (11) 3615-2474
+Mapa
+Inserir mapa incorporado da EMNH
 
 Unidade 3 — RMS Espaços Cirúrgicos
-Av. Marquês de São Vicente, 2219
- Conjs. 711, 713, 715 e 815 — Água Branca
- São Paulo/SP
 Contato
 Telefone: (11) 5242-3246
-Mapa
-Inserir mapa incorporado da RMS Espaços Cirúrgicos
 
 SEÇÃO 7 — DEPOIMENTOS
 Título
@@ -192,12 +191,16 @@ Cirurgiã do Aparelho Digestivo e Coloproctologista
 CRM
 CRM 144.320/SP · RQE 72.325
 
-Endereço
+Endereços de atendimento
+Clínica Alumia
 Alameda Campinas, 1100 — 11º andar
  Jardins — São Paulo/SP
+EMNH
+Av. Marquês de São Vicente, 2219 — Conj. 316
+ Jardim das Perdizes — São Paulo/SP
 
 Contatos
-WhatsApp: (11) 93335-3033
+WhatsApp: (11) 94500-4468
 EMNH: (11) 3615-2474
 RMS: (11) 5242-3246
 contato@draalinealves.com.br

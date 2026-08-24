@@ -311,6 +311,9 @@ address { font-style: normal; }
 .footer h4 { margin-bottom: 1.1rem; font-family: var(--sans); font-size: .76rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 234, 231, .68); }
 .footer-role { margin-bottom: .3rem; font-size: .92rem; }
 .footer-crm { margin-bottom: 1.1rem; font-size: .85rem; }
+.footer .footer-address-title { margin: 1.35rem 0 .6rem; font-family: var(--sans); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(240, 234, 231, .68); }
+.footer-addresses { display: grid; gap: .85rem; }
+.footer-addresses strong { display: block; margin-bottom: .12rem; font-size: .85rem; font-weight: 600; color: rgba(240, 234, 231, .92); }
 .footer address { white-space: pre-line; font-size: .9rem; }
 .footer-list { display: grid; gap: .6rem; margin: 0; padding: 0; list-style: none; font-size: .9rem; }
 .footer-list span { color: rgba(240, 234, 231, .68); }
