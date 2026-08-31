@@ -2,6 +2,9 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <!-- Liga as animações de entrada só quando há JavaScript. Sem isso o conteúdo
+         pré-renderizado ficaria em opacity:0 para crawler que não executa script. -->
+    <script>document.documentElement.classList.add("js")</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Dra. Aline Marcilio Alves | Cirurgia Digestiva e Coloproctologia</title>
