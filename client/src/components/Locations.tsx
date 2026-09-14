@@ -30,15 +30,19 @@ export default function Locations() {
                   {unit.name}
                 </h3>
                 {unit.address && <address>{unit.address}</address>}
-                <a
-                  className="location-contact"
-                  href={unit.href}
-                  target={unit.href.startsWith("http") ? "_blank" : undefined}
-                  rel={unit.href.startsWith("http") ? "noreferrer" : undefined}
-                >
-                  <Phone strokeWidth={1.5} aria-hidden="true" />
-                  {unit.contactLabel}: {unit.contact}
-                </a>
+                {/* Nem todo local tem telefone proprio (a RMS, por exemplo).
+                    Sem esta guarda o `unit.href.startsWith` quebra a pagina. */}
+                {unit.href && unit.contact && (
+                  <a
+                    className="location-contact"
+                    href={unit.href}
+                    target={unit.href.startsWith("http") ? "_blank" : undefined}
+                    rel={unit.href.startsWith("http") ? "noreferrer" : undefined}
+                  >
+                    <Phone strokeWidth={1.5} aria-hidden="true" />
+                    {unit.contactLabel}: {unit.contact}
+                  </a>
+                )}
               </li>
             ))}
           </ul>

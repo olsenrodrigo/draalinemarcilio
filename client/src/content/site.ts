@@ -173,11 +173,14 @@ export const site = {
         mapTitle: "Mapa da EMNH — Av. Marquês de São Vicente, 2219, Conj. 316, Jardim das Perdizes",
       },
       {
+        // A RMS continua listada como local de atendimento, mas sem telefone:
+        // o número é da RMS, não da Dra. Aline, e o agendamento com ela é
+        // sempre pelo WhatsApp. Pedido da própria Dra. Aline em 14/09/2026.
         name: "RMS Espaços Cirúrgicos",
         address: null,
-        contactLabel: "Telefone",
-        contact: "(11) 5242-3246",
-        href: "tel:+551152423246",
+        contactLabel: null,
+        contact: null,
+        href: null,
         map: null,
         mapTitle: null,
       },
@@ -281,7 +284,6 @@ export const site = {
     contacts: [
       ["WhatsApp", WHATSAPP_DISPLAY, whatsappUrl()],
       ["EMNH", "(11) 3615-2474", "tel:+551136152474"],
-      ["RMS", "(11) 5242-3246", "tel:+551152423246"],
       ["E-mail", EMAIL, `mailto:${EMAIL}`],
     ] as const,
     linksTitle: "Navegação",
