@@ -2,7 +2,7 @@
 
 export const WHATSAPP_NUMBER = "5511945004468";
 export const WHATSAPP_DISPLAY = "(11) 94500-4468";
-export const EMAIL = "contato@draalinealves.com.br";
+export const EMAIL = "contato@draalinemarcilio.com.br";
 export const INSTAGRAM = "https://www.instagram.com/draaline.alves/";
 export const CRM = "CRM 144.320/SP · RQE 72.325";
 
